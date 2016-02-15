@@ -2,12 +2,12 @@ import json
 
 import requests
 
-APIKEY = "2c029ff2cf7349739af9ca5af9edc1096bf8689c"
-VENUE = "WYUCEX"
-STOCK = "WIH"
+APIKEY = ""
+VENUE = ""
+STOCK = ""
 BASE_URL = "https://api.stockfighter.io/ob/api"
 
-ACCOUNT = "BMS30771012"
+ACCOUNT = ""
 
 
 def buy(price, qty, venue=VENUE, symbol=STOCK, account=ACCOUNT, order_type="limit"):
