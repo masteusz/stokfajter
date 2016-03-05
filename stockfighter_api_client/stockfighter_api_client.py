@@ -27,7 +27,7 @@ class StockFighterApiClient:
             self.logger.debug("Loaded API key from file: %r", self.apikey)
 
     def heartbeat_api(self):
-        pass
+        raise NotImplementedError
 
     def load_api_key_from_file(self, filename):
         try:
