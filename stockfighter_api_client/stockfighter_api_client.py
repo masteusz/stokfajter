@@ -29,6 +29,11 @@ class StockFighterApiClient:
     def heartbeat_api(self):
         raise NotImplementedError
 
+
+    def heartbeat_venue(self):
+        raise NotImplementedError
+
+
     def load_api_key_from_file(self, filename):
         try:
             with open(filename, "r") as f:
