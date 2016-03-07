@@ -35,8 +35,13 @@ class StockFighterApiClient:
         else:
             r.raise_for_status()
 
-    def heartbeat_venue(self):
-        raise NotImplementedError
+    def heartbeat_venue(self, venue):
+        url = self._base_url + "/venues/{venue}/heartbeat".format(venue=venue)
+        r = requests.get(url, headers={"X-Starfighter-Authorization": self.apikey})
+        if r.status_code == 200:
+            return r.json().get("ok")
+        else:
+            r.raise_for_status()
 
     def load_api_key_from_file(self, filename):
         try:
