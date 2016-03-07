@@ -2,7 +2,8 @@ import datetime
 import json
 import logging
 
-import const
+from stockfighter_api_client import const
+import requests
 
 
 def configure_logger(logger=logging.getLogger('stockfighter')):
@@ -27,12 +28,15 @@ class StockFighterApiClient:
             self.logger.debug("Loaded API key from file: %r", self.apikey)
 
     def heartbeat_api(self):
-        raise NotImplementedError
-
+        url = self._base_url + "/heartbeat"
+        r = requests.get(url, headers={"X-Starfighter-Authorization": self.apikey})
+        if r.status_code == 200:
+            return r.json().get("ok")
+        else:
+            r.raise_for_status()
 
     def heartbeat_venue(self):
         raise NotImplementedError
-
 
     def load_api_key_from_file(self, filename):
         try:
